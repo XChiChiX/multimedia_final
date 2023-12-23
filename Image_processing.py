@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+import random
 
 def imgBinQuan(img):
     # 獲取影像的高度和寬度
@@ -35,7 +36,8 @@ def start(img1_name, img2_name):
     img1 = imgBinQuan(img1[:,:,::-1])
     img2 = imgBinQuan(img2[:,:,::-1])
 
-    dst = cv2.addWeighted(img1, 0.7, img2, 0.3, 0)
+    weight = random.random()
+    dst = cv2.addWeighted(img1, weight, img2, 1.0-weight, 0)
 
     # plt.imshow(dst)
     # plt.show()
